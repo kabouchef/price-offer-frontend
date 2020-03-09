@@ -1,0 +1,125 @@
+// http://mozaic.adeo.cloud/Foundations/Colors/
+
+// Primary-colors
+
+// Primary colors are the brand colors.
+// They are the key components for our users to live and adopt the LEROY MERLIN's experience.
+// These are the two primary colors palettes we use in this design system.
+
+// Primary 01
+$color-primary-01-100 : #eaf3e2;
+$color-primary-01-200 : #cbe3b5;
+$color-primary-01-300 : #add585;
+$color-primary-01-400 : #91c854;
+$color-primary-01-500 : #78be20;
+$color-primary-01-600 : #41a017;
+$color-primary-01-700 : #158110;
+$color-primary-01-800 : #0a601b;
+$color-primary-01-900 : #053e1f;
+
+// Primary 02
+// The primary blue is the essence of the sub-brand LEROY MERLIN Campus.
+// Campus is a brand of leroymerlin.fr dedicated to the inhabitant learning,
+// it provides many DIY online and in-store courses.
+$color-primary-02-100 : #dbedea;
+$color-primary-02-200 : #a5d1cb;
+$color-primary-02-300 : #6eb4ad;
+$color-primary-02-400 : #379590;
+$color-primary-02-500 : #007574;
+$color-primary-02-600 : #035f64;
+$color-primary-02-700 : #044c53;
+$color-primary-02-800 : #063a44;
+$color-primary-02-900 : #062b35;
+
+// Greys :
+// We used the same principles to design our greyscale but greys are based on 11 values swatches.
+// Greys have specific use cases for UI elements : Texts & Titles - Icons - Backgrounds
+$color-grey-100 : #eeeef0;
+$color-grey-200 : #d3d2d6;
+$color-grey-300 : #bab6bc;
+$color-grey-400 : #a19ba2;
+$color-grey-500 : #887f87;
+$color-grey-600 : #6f676c;
+$color-grey-700 : #554f52;
+$color-grey-800 : #3c3738;
+$color-grey-900 : #222020;
+$color-grey-000 : #ffffff;
+
+// Status Colors
+
+// Status colors convey various levels of importance for feedback informations, like errors or warning.
+// They can also highlight important informations or tips for the user or inform him that an operation had fail of succeded.
+
+// Info color : Used to highlight important information the user should be aware about.
+// Should only be used if the information does not represent a threat.
+$color-info-100 : #ecfcfd;
+$color-info-200 : #b7eef5;
+$color-info-300 : #84dbeb;
+$color-info-400 : #54c4de;
+$color-info-500 : #25a8d0;
+$color-info-600 : #2282a8;
+$color-info-700 : #1e5f82;
+$color-info-800 : #18415d;
+$color-info-900 : #102739;
+
+// Warning color : Used to inform abouts risks or threats. It teel the user to be carefull about something.
+// And orange is used for users feedback like the ratings.
+$color-warning-100 : #fff5eb;
+$color-warning-200 : #ffdab2;
+$color-warning-300 : #ffc17d;
+$color-warning-400 : #ffab4b;
+$color-warning-500 : #fc961e;
+$color-warning-600 : #c86f21;
+$color-warning-700 : #974f20;
+$color-warning-800 : #6a351c;
+$color-warning-900 : #401f15;
+
+// Danger color : Used to inform user of an error, or that some operation when wrong.
+// It's also for discount
+$color-danger-100 : #feedee;
+$color-danger-200 : #fab9bc;
+$color-danger-300 : #f38789;
+$color-danger-400 : #ea5d58;
+$color-danger-500 : #df382b;
+$color-danger-600 : #b42a27;
+$color-danger-700 : #8b2226;
+$color-danger-800 : #641b21;
+$color-danger-900 : #3e1219;
+
+// Yellow color is for illustrations and special offers.
+$color-secondary-yellow-100 : #fff8e2;
+$color-secondary-yellow-200 : #ffebaf;
+$color-secondary-yellow-300 : #fee07d;
+$color-secondary-yellow-400 : #fcd64c;
+$color-secondary-yellow-500 : #f8cc1c;
+$color-secondary-yellow-600 : #c9a21b;
+$color-secondary-yellow-700 : #9c7b18;
+$color-secondary-yellow-800 : #705613;
+$color-secondary-yellow-900 : #46350d;
+
+// Purple color is used for illustration purposes.
+$color-secondary-purple-100 : #efebfe;
+$color-secondary-purple-200 : #c7b0fa;
+$color-secondary-purple-300 : #a575f3;
+$color-secondary-purple-400 : #883be9;
+$color-secondary-purple-500 : #7000dd;
+$color-secondary-purple-600 : #5803b3;
+$color-secondary-purple-700 : #42058a;
+$color-secondary-purple-800 : #2e0663;
+$color-secondary-purple-900 : #1c053d;
+
+// Color for app
+$color-white : $color-grey-000;
+$color-black : #000000;
+$color-primary : $color-primary-01-500;
+$color-secondary : $color-primary-02-500;
+
+// Color for font
+$color-font-darkest : $color-black;
+$color-font-dark : $color-grey-900;
+$color-font-light : $color-grey-700;
+$color-font-lightest : $color-grey-000;
+$color-font-info : $color-info-600;
+$color-font-success : $color-primary-01-600;
+$color-font-warning : $color-warning-600;
+$color-font-warning : $color-danger-600;

@@ -1,0 +1,165 @@
+<div class="container">
+  <div class="logo">
+    <img src="assets/images/Leroy_Merlin.svg" alt="Logo Leroy Merlin" title="Leroy Merlin"/>
+  </div>
+  <div class="title">
+    <h2>OAP - Extracteur des tarifs de simulation</h2>
+  </div>
+</div>
+    <!--<form class="simulation-form">
+        <mat-form-field class="simulation-code">
+        <mat-label>Numéro de Simulation</mat-label>
+        <input matInput placeholder="Ex. 20190415S38248" value="20190415S38248" #simulationCode>
+      </mat-form-field>
+      <br><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Environnement</mat-label>
+        <mat-select #environment>
+          <mat-option *ngFor="let environment of environments" [value]="environment.value" >
+            {{environment.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+        <mat-radio-group aria-label="Schema">
+          <mat-radio-button value="REEL" #schema>REEL</mat-radio-button>
+          <mat-radio-button value="SIMUL" #schema>SIMUL</mat-radio-button>
+        </mat-radio-group>
+      <br>
+      <button mat-stroked-button [disabled]="!isAuth" (click)="openSnackBar(simulationCode.value,
+       environment.value + '_' + schema.value)">Submit</button>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Configuration de l'offre
+          </mat-panel-title>
+          <mat-panel-description>
+            Propriètés de la simulation
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <mat-label>Numéro de Simulation</mat-label>
+          <input matInput placeholder="Ex. 20190415S38248" value="20190415S38248" #simulationCode>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Environnement</mat-label>
+          <mat-select #environment>
+            <mat-option *ngFor="let environment of environments" [value]="environment.value" >
+              {{environment.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-radio-group aria-label="Schema">
+            <mat-radio-button value="REEL" #schema>REEL</mat-radio-button>
+            <mat-radio-button value="SIMUL" #schema>SIMUL</mat-radio-button>
+          </mat-radio-group>
+        </mat-form-field>
+        <mat-form-field>
+          <button mat-stroked-button [disabled]="!isAuth" (click)="openSnackBar(simulationCode.value,
+       schema.value)">Submit</button>
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>-->
+<div class="forms">
+  <div class="simulation-form">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Simulation
+          </mat-panel-title>
+          <mat-panel-description>
+            Configuration de la simulation
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Numéro de Simulation</mat-label>
+          <input matInput placeholder="Ex. 20190415S38248" [(ngModel)]="simulationCode" name="simulation-code">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Environnement</mat-label>
+          <mat-select [(ngModel)]="environment" name="environment">
+            <mat-option *ngFor="let environment of environments" [value]="environment.value" >
+              {{environment.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <button mat-stroked-button (click)="submitSimulation()">Soumettre</button>
+
+  </div>
+</div>
+<div class="preview" *ngIf="oneExists">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Simulation : {{simulationCode}}
+        </mat-panel-title>
+        <mat-panel-description>
+          Détail de l'offre
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <table>
+          <tr class="entete">
+            <th class="entete-identifiant">IDENTIFIANT</th>
+            <th class="entete-detail_prestation">DETAIL_PRESTATION</th>
+            <th class="entete-quantite">QUANTITE</th>
+            <th class="entete-tarif_unitaire">TARIF_UNITAIRE</th>
+            <th class="entete-tarif_prestation">TARIF_PRESTATION</th>
+          </tr>
+          <tr *ngFor="let priceLine of priceLineList">
+            <td class="identifiant">{{priceLine.identifiant}}</td>
+            <td class="detail-prestation">{{priceLine.detail_prestation}}</td>
+            <td class="quantite">{{priceLine.quantite}}</td>
+            <td class="tarif-unitaire">{{priceLine.tarif_unitaire}} €</td>
+            <td class="tarif-prestation">{{priceLine.tarif_prestation}} €</td>
+          </tr>
+<!--          <tr>
+            <td class="entete-HT">PRIX TOTAL HT</td>
+            <td class="total-HT">{{priceLineList.totalPriceHT}} €</td>
+          </tr>
+          <tr>
+            <td class="entete-reduite">PRIX TOTAL TVA 5.5%</td>
+            <td class="total-reduite">{{priceLineList.totalPriceTVAReduite}} €</td>
+          </tr>
+          <tr>
+            <td class="entete-inter">PRIX TOTAL TVA 10%</td>
+            <td class="total-inter">{{priceLineList.totalPriceTVAInter}} €</td>
+          <tr>
+            <td class="entete-normale">PRIX TOTAL TVA 20%</td>
+            <td class="total-normale">{{priceLineList.totalPriceTVANormale}} €</td>
+          </tr>-->
+        </table>
+        <div class="total-price">
+          <table>
+            <tr>
+              <th class="entete-HT">PRIX TOTAL HT</th>
+              <td class="total-HT">{{priceLineList[0].totalPriceHT}} €</td>
+            </tr>
+            <tr *ngIf="priceLineList[0].totalPriceTVAReduite != 0.0">
+              <th class="entete-reduite">PRIX TOTAL TVA 5.5%</th>
+              <td class="total-reduite">{{priceLineList[0].totalPriceTVAReduite}} €</td>
+            </tr>
+            <tr *ngIf="priceLineList[0].totalPriceTVAInter != 0.0">
+              <th class="entete-inter">PRIX TOTAL TVA 10%</th>
+              <td class="total-inter">{{priceLineList[0].totalPriceTVAInter}} €</td>
+            <tr>
+              <th class="entete-normale">PRIX TOTAL TVA 20%</th>
+              <td class="total-normale">{{priceLineList[0].totalPriceTVANormale}} €</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
+

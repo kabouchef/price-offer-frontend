@@ -1,0 +1,82 @@
+.loader {
+  position         : fixed;
+  z-index          : 9999;
+  top              : 0;
+  left             : 0;
+  width            : 100vw;
+  height           : 100vh;
+  display          : flex;
+  justify-content  : center;
+  align-items      : center;
+  background-color : rgba(255, 255, 255, 0.8);
+  backdrop-filter  : blur(5px);
+}
+
+::ng-deep svg.triangle polygon {
+  fill      : none;
+  stroke    : #77bd23;
+  animation : filling-triangle 3s linear forwards infinite;
+}
+
+::ng-deep .letters {
+  fill      : none;
+  stroke    : currentColor;
+  animation : stroke 3s linear forwards infinite;
+}
+
+@keyframes filling-triangle {
+  0% {
+    stroke-opacity : 0.1
+  }
+  40% {
+    fill : transparent;
+  }
+  50% {
+    stroke-opacity : 1;
+    fill           : #77bd23;
+  }
+  60% {
+    fill : #77bd23;
+  }
+  70% {
+    fill : transparent;
+  }
+  100% {
+    stroke-opacity : 0.2
+  }
+}
+
+@keyframes stroke {
+  0% {
+    stroke-dasharray : 0, 1000;
+  }
+
+  40% {
+    stroke-dashoffset : 0;
+    stroke-dasharray  : 120, 1000;
+    fill              : transparent;
+  }
+
+  50% {
+    stroke-dashoffset : 0;
+    stroke-dasharray  : 120, 1000;
+    fill              : currentColor;
+  }
+
+  60% {
+    stroke-dashoffset : 0;
+    stroke-dasharray  : 120, 1000;
+    fill              : currentColor;
+  }
+
+  70% {
+    stroke-dashoffset : 0;
+    stroke-dasharray  : 120, 1000;
+    fill              : transparent;
+  }
+
+  100% {
+    stroke-dashoffset : -120px;
+    stroke-dasharray  : 120, 1000;
+  }
+}

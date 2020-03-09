@@ -1,0 +1,15 @@
+<h2>Authentification</h2>
+<form class="simulation-form">
+  <img src="assets/images/Leroy_Merlin.svg" alt="Logo Leroy Merlin" title="Leroy Merlin"/>
+  <mat-form-field appearance="fill">
+    <mat-label>LDAP</mat-label>
+    <input matInput placeholder="Identifiant LDAP" [(ngModel)]="idLDAP" name="idLDAP" value="10098484">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput placeholder="Mot de passe LDAP" [(ngModel)]="passLDAP" name="passLDAP" type="password" value="ler123">
+  </mat-form-field>
+
+  <button class="btn btn-default" *ngIf="!authStatus" (click)="onSignIn()">Se connecter</button>
+  <button class="btn btn-danger" *ngIf="authStatus" (click)="onSignOut()">Se déconnecter</button>
+</form>
