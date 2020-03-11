@@ -7,7 +7,7 @@ import {FourOhFourComponent} from './modules/four-oh-four/four-oh-four.component
 import {SimulationExtractorComponent} from './modules/simulation-extractor/simulation-extractor.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -17,9 +17,11 @@ import {AuthComponent} from './auth/auth.component';
 import {AuthService} from './core/services/auth.service';
 import {AuthGuard} from './core/services/auth.guard';
 import {SimulationService} from './core/services/simulation.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { LoaderComponent } from './core/loader/loader.component';
+import {LoaderInterceptor} from './core/interceptors/loader.interceptor';
+import {ProgressSpinnerConfigurableComponent} from './progress-spinner-configurable/progress-spinner-configurable.component';
+
 
 const appRoutes: Routes = [
   {path: '', canActivate: [AuthGuard], component: AppComponent},
@@ -35,7 +37,7 @@ const appRoutes: Routes = [
     FourOhFourComponent,
     SimulationExtractorComponent,
     AuthComponent,
-    LoaderComponent
+    ProgressSpinnerConfigurableComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,13 +51,17 @@ const appRoutes: Routes = [
     MatExpansionModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [
     MatSnackBar,
     AuthService,
     AuthGuard,
     SimulationService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true
+    },
     AuthComponent
   ],
   bootstrap: [AppComponent]

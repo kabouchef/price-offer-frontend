@@ -22,7 +22,13 @@ export class SimulationExtractorComponent implements OnInit {
   public simulationCode = '20190415S38248';
   public environment = 'RECETTE';
   public priceLineList;
-  public oneExists = true;
+  public tvaReduceAllowed = false;
+  public tvaInterAllowed = false;
+  public tvaNormalAllowed = false;
+  public tvaReduceEffected = false;
+  public tvaInterEffected = false;
+  public tvaNormalEffected = false;
+  public oneExists = false;
 
 
   @Input() environments: Environment[] = [
@@ -49,6 +55,24 @@ export class SimulationExtractorComponent implements OnInit {
 
     this.simulationService.sendSimulation(this.simulationCode, this.environment).subscribe(el => {
       this.priceLineList = el;
+      if (this.priceLineList[1].totalPriceTVAReduite !== 0.0) {
+        this.tvaReduceAllowed = true;
+      }
+      if (this.priceLineList[1].totalPriceTVAInter !== 0.0) {
+        this.tvaInterAllowed = true;
+      }
+      if (this.priceLineList[1].totalPriceTVANormale !== 0.0) {
+        this.tvaNormalAllowed = true;
+        if (this.priceLineList[1].totalPriceTVAReduite !== 0.0) {
+          this.tvaReduceEffected = true;
+        } else if (this.priceLineList[1].totalPriceTVAInter !== 0.0) {
+          this.tvaInterEffected = true;
+        } else {
+          this.tvaNormalEffected = true;
+        }
+      }
+
+      this.oneExists = true;
     });
 
   }

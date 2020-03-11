@@ -20,11 +20,12 @@ export class LoaderInterceptor implements HttpInterceptor {
   /**
    * Interceptor when show request HTTP : show loader before a call,
    * And when a call is finish, hide loader.
-   * @param req
-   * @param next
+   * @param req requete
+   * @param next next
    * @return Observable<HttpEvent>
    */
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     this.showLoader(req.url);
     return next.handle(req).pipe(tap(
       (event: HttpEvent<any>) => {
@@ -37,7 +38,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   /**
    * Check if url and extension is valid for show loader
-   * @param url
+   * @param url get url
    */
   private showLoader(url: string): void {
     if (this.loaderIsAuthorize) {
@@ -47,7 +48,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   /**
    * Check if url and extension is valid for hide loader
-   * @param url
+   * @param url get url
    */
   private hideLoader(url): void {
     if (this.loaderIsAuthorize) {

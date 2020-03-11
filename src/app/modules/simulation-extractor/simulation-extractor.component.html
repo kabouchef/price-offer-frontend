@@ -108,51 +108,44 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div>
-        <table>
-          <tr class="entete">
-            <th class="entete-identifiant">IDENTIFIANT</th>
-            <th class="entete-detail_prestation">DETAIL_PRESTATION</th>
-            <th class="entete-quantite">QUANTITE</th>
-            <th class="entete-tarif_unitaire">TARIF_UNITAIRE</th>
-            <th class="entete-tarif_prestation">TARIF_PRESTATION</th>
-          </tr>
-          <tr *ngFor="let priceLine of priceLineList">
-            <td class="identifiant">{{priceLine.identifiant}}</td>
-            <td class="detail-prestation">{{priceLine.detail_prestation}}</td>
-            <td class="quantite">{{priceLine.quantite}}</td>
-            <td class="tarif-unitaire">{{priceLine.tarif_unitaire}} €</td>
-            <td class="tarif-prestation">{{priceLine.tarif_prestation}} €</td>
-          </tr>
-<!--          <tr>
-            <td class="entete-HT">PRIX TOTAL HT</td>
-            <td class="total-HT">{{priceLineList.totalPriceHT}} €</td>
-          </tr>
-          <tr>
-            <td class="entete-reduite">PRIX TOTAL TVA 5.5%</td>
-            <td class="total-reduite">{{priceLineList.totalPriceTVAReduite}} €</td>
-          </tr>
-          <tr>
-            <td class="entete-inter">PRIX TOTAL TVA 10%</td>
-            <td class="total-inter">{{priceLineList.totalPriceTVAInter}} €</td>
-          <tr>
-            <td class="entete-normale">PRIX TOTAL TVA 20%</td>
-            <td class="total-normale">{{priceLineList.totalPriceTVANormale}} €</td>
-          </tr>-->
-        </table>
+        <div class="head-table">
+          <table>
+            <tr class="entete">
+              <th class="entete-identifiant">IDENTIFIANT</th>
+              <th class="entete-detail_prestation">DETAIL_PRESTATION</th>
+              <th class="entete-quantite">QUANTITE</th>
+              <th class="entete-tarif_unitaire">TARIF_UNITAIRE</th>
+              <th class="entete-tarif_prestation">TARIF_PRESTATION</th>
+            </tr>
+            <tr *ngFor="let priceLine of priceLineList">
+              <td class="identifiant">{{priceLine.identifiant}}</td>
+              <td class="detail-prestation">{{priceLine.detail_prestation}}</td>
+              <td class="quantite">{{priceLine.quantite}}</td>
+              <td class="tarif-unitaire">{{priceLine.tarif_unitaire}} €</td>
+              <td class="tarif-prestation">{{priceLine.tarif_prestation}} €</td>
+            </tr>
+          </table>
+        </div>
         <div class="total-price">
           <table>
             <tr>
               <th class="entete-HT">PRIX TOTAL HT</th>
               <td class="total-HT">{{priceLineList[0].totalPriceHT}} €</td>
             </tr>
-            <tr *ngIf="priceLineList[0].totalPriceTVAReduite != 0.0">
+            <tr *ngIf="tvaReduceAllowed" [ngClass]="{'display-tva-reduce': true,
+                'display-tva-reduce-effected': tvaReduceEffected ,
+                'display-tva-reduce-not-effected': !tvaReduceEffected}">
               <th class="entete-reduite">PRIX TOTAL TVA 5.5%</th>
               <td class="total-reduite">{{priceLineList[0].totalPriceTVAReduite}} €</td>
             </tr>
-            <tr *ngIf="priceLineList[0].totalPriceTVAInter != 0.0">
+            <tr *ngIf="tvaInterAllowed" [ngClass]="{'display-tva-inter': true,
+                'display-tva-inter-effected': tvaInterEffected ,
+                'display-tva-inter-not-effected': !tvaInterEffected}">
               <th class="entete-inter">PRIX TOTAL TVA 10%</th>
               <td class="total-inter">{{priceLineList[0].totalPriceTVAInter}} €</td>
-            <tr>
+            <tr *ngIf="tvaNormalAllowed" [ngClass]="{'display-tva-normal': true,
+                'display-tva-normal-effected': tvaNormalEffected ,
+                'display-tva-normal-not-effected': !tvaNormalEffected}">
               <th class="entete-normale">PRIX TOTAL TVA 20%</th>
               <td class="total-normale">{{priceLineList[0].totalPriceTVANormale}} €</td>
             </tr>
