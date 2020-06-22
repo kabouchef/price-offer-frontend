@@ -129,53 +129,22 @@ tr{
 
 .total-price{
   padding : 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.total-reduite, .total-inter, .total-normale{
+.display-tva-reduce-effected, .display-tva-inter-effected, .display-tva-normal-effected{
   color : #7cb220;
   font-family: "Leroy Merlin Font Bold";
 }
-
-.identifiant{
-
+.display-tva-reduce-not-effected, .display-tva-inter-not-effected, .display-tva-normal-not-effected{
+  font-family: "Leroy Merlin Font";
 }
-.detail_prestation{
 
+.mat-form-field {
+  margin-right: 8px;
 }
-.quantite{
 
-}
-.tarif-unitaire{
 
-}
-.tarif-prestation{
-
-}
-.type-prestation{
-
-}
-.prestation_de{
-
-}
-.tva-reduite{
-
-}
-.tva-inter{
-
-}
-.tva-normale{
-
-}
-.code-49{
-
-}
-.cod-type_prestation{
-
-}
-.temp-pose{
-
-}
-.ordre{
-
-}
 

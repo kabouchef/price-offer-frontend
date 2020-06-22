@@ -1,35 +1,26 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-
-import {Subscription} from 'rxjs';
-
-import {PATH_IMAGES} from '../common/common.constants';
-import {LoaderService} from '../services/loader/loader.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import {PATH_IMAGES} from '../core/common/common.constants';
+import {Subscription} from 'rxjs';
+import {LoaderService} from '../core/services/loader/loader.service';
 
 @Component({
-  selector: 'app-loader',
-  templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  selector: 'app-progress-spinner-configurable',
+  templateUrl: './progress-spinner-configurable.component.html',
+  styleUrls: ['./progress-spinner-configurable.component.scss']
 })
+export class ProgressSpinnerConfigurableComponent implements OnInit, OnDestroy {
 
-/**
- * Loader Component
- * @author: Farouk KABOUCHE
- */
-export class LoaderComponent implements OnInit, OnDestroy {
+  color: ThemePalette = 'warn';
+  mode: ProgressSpinnerMode = 'indeterminate';
 
-  color: ThemePalette = 'primary';
-  mode: ProgressSpinnerMode = 'determinate';
-  value = 50;
-  bufferValue = 75;
 
   public show = true;
-  public pathLoader = `${PATH_IMAGES}/logo-lm.svg`;
   private subscription: Subscription;
 
   constructor(private loaderService: LoaderService) {
-    console.log('LoaderService');
+    console.log('the good');
   }
 
   /**
@@ -51,4 +42,5 @@ export class LoaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
 }
